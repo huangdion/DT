@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+</head>
+<body>
+  <button type="button" class="btn btn-primary">Add Guest</button>
+  <h1>Guest</h1>
+  <table id="example" class="display" style="width: 100%">
+    <thead>
+      <tr>
+        <th>Guest ID</th>
+        <th>Nama</th>
+        <th>Jenis ID</th>
+        <th>Nomor ID</th>
+        <th>Contact Number</th>
+      </tr>
+    </thead>
+  </table>
+
+  <script>
+    $(document).ready(function() {
+      $("#example").DataTable({
+        serverSide: true,
+        ajax: {
+          url: "ajaxguest.php",
+          type: "POST",
+        },
+        columns: [{ data: "guest_id" }, { data: "nama" }, { data: "jenis_id" }, { data: "nomor_id" }, { data: "contact_number" }],
+      });
+    });
+  </script>
+</body>
+</html>

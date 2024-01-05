@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR</title>
+  <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css" />
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <div class="container  m-md-auto ">
+
+        <button type="button" class="btn btn-primary">Add AR</button>
+        <h1>AR</h1>
+        <table id="example" class="display" style="width: 100%">
+          <thead>
+            <tr>
+              <th>AR ID</th>
+              <th>Tanggal</th>
+              <th>Jenis</th>
+              <th>Keterangan</th>
+              <th>Amount</th>
+              <th>DK ID</th>
+              <th>Payment ID</th>
+            </tr>
+          </thead>
+        </table>
+    </div>
+
+  <script>
+    $(document).ready(function() {
+      $("#example").DataTable({
+        serverSide: true,
+        ajax: {
+          url: "ajaxar.php",
+          type: "POST",
+        },
+        columns: [{ data: "ar_id" }, { data: "tanggal" }, { data: "jenis" }, { data: "keterangan" }, { data: "amount" }, { data: "dk_id" }, { data: "payment_id" }],
+      });
+    });
+  </script>
+</body>
+</html>

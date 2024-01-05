@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Occupied</title>
+  <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css" />
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+</head>
+<body>
+  <button type="button" class="btn btn-primary">Add Occupied</button>
+  <h1>Occupied</h1>
+  <table id="example" class="display" style="width: 100%">
+    <thead>
+      <tr>
+        <th>Occupied ID</th>
+        <th>Room ID</th>
+        <th>Guest ID</th>
+        <th>Voucher ID</th>
+        <th>Dari Tanggal</th>
+        <th>Sampai Tanggal</th>
+        <th>Ready Time</th>
+        <th>Checkin Time</th>
+        <th>Checkout Time</th>
+        <th>Rate</th>
+        <th>Group ID</th>
+      </tr>
+    </thead>
+  </table>
+
+  <script>
+    $(document).ready(function() {
+      $("#example").DataTable({
+        serverSide: true,
+        ajax: {
+          url: "ajaxoccupied.php",
+          type: "POST",
+        },
+        columns: [{ data: "occupied_id" }, { data: "room_id" }, { data: "guest_id" }, { data: "voucher_id" }, { data: "dari_tanggal" }, { data: "sampai_tanggal" }, { data: "ready_time" }, { data: "checkin_time" }, { data: "checkout_time" }, { data: "rate" }, { data: "group_id" }],
+      });
+    });
+  </script>
+</body>
+</html>
